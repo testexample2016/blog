@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
+    
+
+    public function __construct()
+{
+    $this->middleware('auth');
+}
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +22,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $id = Auth::id();
-        return ('I am in ArticleController@index  '.$id);
+        // $id = Auth::id();
+
+        return view('article.index');
     }
 
     /**
@@ -26,7 +34,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return ('I am in ArticleController@create');
+        return view('article.create');
     }
 
     /**
@@ -48,7 +56,7 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        return ('I am in ArticleController@show  '.$id);
+         return view('article.show');
     }
 
     /**
@@ -59,7 +67,7 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        return ('I am in ArticleController@edit with  '.$id);
+         return view('article.edit');
     }
 
     /**

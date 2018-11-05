@@ -17,9 +17,12 @@ Route::get('/', function () {
 
 Route::get('welcome', function () {
     return view('welcome');
-});
+})->middleware('auth');
 
-Route::resource('article', 'ArticleController')->middleware('auth');
+// Route::resource('article', 'ArticleController')->middleware('auth');
+
+Route::resource('article', 'ArticleController');
+
 
 Auth::routes();
 
