@@ -2,6 +2,6 @@
 
 @section('content')
 
-I am in ArticleController@create {{ Auth::id()}}
+I am in admin ArticleController@index {{ Auth::id()}}
 
 @endsection
