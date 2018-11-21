@@ -4,6 +4,8 @@
 
 @include('menu')
 
+@include('error.error')
+
 I am in ArticleController@create {{ Auth::id()}}
 
 <h1>Write a New Article</h1>
@@ -14,7 +16,7 @@ I am in ArticleController@create {{ Auth::id()}}
 {!! Form::open(['action' => 'ArticleController@store']) !!}
 
 
-@include('article.userform', ['submitButtonText' => 'Add Project'])
+@include('article.userform', ['submitButtonText' => 'Add Article'])
    
 
 {!! Form::close() !!}

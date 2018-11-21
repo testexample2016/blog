@@ -4,6 +4,8 @@
 
 @include('menu')
 
+@include('error.error')
+
 I am in ArticleController@show {{ Auth::id()}}
 
 <h2>{{$article->title}}</h2>
@@ -18,10 +20,10 @@ I am in ArticleController@show {{ Auth::id()}}
 
 <hr>
 
-@if(Auth::user() == $article->user)
+@can('update', $article)
 
  <a href="{{ action('ArticleController@edit', [$article->id]) }}" class="btn btn-info" role="button"> Edit Article</a>
 
-@endif
+@endcan
 
 @endsection
