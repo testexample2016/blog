@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Article;
+
 use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
@@ -24,7 +26,10 @@ class ArticleController extends Controller
     {
         // $id = Auth::id();
 
-        return view('article.index');
+        $articles = Article::all();
+
+       return view('article.index', compact('articles'));
+
     }
 
     /**
@@ -45,7 +50,14 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        return ('I am in ArticleController@store');
+
+        $article = new Article($request->all());
+
+        Auth::user()->articles()->save($article);
+
+        return redirect ('article');
+
+        // return ('I am in ArticleController@store');
     }
 
     /**
@@ -56,7 +68,11 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-         return view('article.show');
+
+        $article = Article::findOrFail($id);
+
+        return view('article.show', compact('article'));
+    
     }
 
     /**
@@ -67,7 +83,9 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-         return view('article.edit');
+        $article = Article::findOrFail($id);
+
+        return view('article.edit', compact('article'));
     }
 
     /**
@@ -79,7 +97,11 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return ('I am in ArticleController@update');
+        $article = Article::findOrFail($id);
+
+        $article->update($request->all());
+
+        return redirect('article');
     }
 
     /**
