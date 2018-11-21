@@ -18,7 +18,10 @@ I am in ArticleController@show {{ Auth::id()}}
 
 <hr>
 
+@if(Auth::user() == $article->user)
+
  <a href="{{ action('ArticleController@edit', [$article->id]) }}" class="btn btn-info" role="button"> Edit Article</a>
 
+@endif
 
 @endsection
