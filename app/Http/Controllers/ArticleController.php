@@ -39,6 +39,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Article::class);
+
         return view('article.create');
     }
 
@@ -71,6 +73,8 @@ class ArticleController extends Controller
 
         $article = Article::findOrFail($id);
 
+        $this->authorize('view', $article);
+
         return view('article.show', compact('article'));
     
     }
@@ -85,6 +89,8 @@ class ArticleController extends Controller
     {
         $article = Article::findOrFail($id);
 
+        $this->authorize('update', $article);
+
         return view('article.edit', compact('article'));
     }
 
@@ -98,6 +104,8 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $article = Article::findOrFail($id);
+
+        $this->authorize('update', $article);
 
         $article->update($request->all());
 

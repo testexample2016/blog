@@ -4,6 +4,8 @@
 
 @include('menu')
 
+@include('error.error')
+
 I am in ArticleController@index {{ Auth::id()}}
 
 <h2>Articles</h2>

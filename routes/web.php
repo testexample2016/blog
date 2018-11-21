@@ -19,6 +19,10 @@ Route::get('welcome', function () {
     return view('welcome');
 })->middleware('auth');
 
+Route::get('admin', function () {
+    return view('admin.index');
+})->middleware('auth');
+
 // Route::resource('article', 'ArticleController')->middleware('auth');
 
 Route::resource('article', 'ArticleController');

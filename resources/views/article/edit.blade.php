@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('error.error')
+
 I am in ArticleController@edit {{ Auth::id()}}
 
 <h1>Edit:  {{ $article->title }}</h1>
