@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\MailResetPasswordNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -31,4 +32,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Article');
     }
+
+
+    public function sendPasswordResetNotification($token)
+{
+    $this->notify(new MailResetPasswordNotification($token));
+}
+
 }
