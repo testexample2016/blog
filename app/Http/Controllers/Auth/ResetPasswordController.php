@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
@@ -25,7 +27,23 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+     protected function redirectTo()
+    
+    {
+
+    if(Auth::user()->isAdmin)
+    {
+         return 'admin';
+
+    }
+
+    else {
+
+        return 'welcome';
+
+    }
+
+    }
 
     /**
      * Create a new controller instance.
